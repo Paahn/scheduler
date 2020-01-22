@@ -3,6 +3,8 @@ import InterviewerList from "../InterviewerList";
 import Button from "../Button";
 
 export default function Form(props) {
+  const [name, setName] = useState(props.name);
+  const [interviewer, setInterviewer] = useState(props.interviewer);
 
 
   return (
@@ -14,12 +16,17 @@ export default function Form(props) {
             name="name"
             type="text"
             placeholder="Enter Student Name"
+            onChange={event => setName(event.target.value)}
           /*
             This must be a controlled component
           */
           />
         </form>
-        <InterviewerList interviewers={props.interviewers} value={props.interviewer} onChange={props.setInterviewer} />
+        <InterviewerList 
+        interviewers={props.interviewers} 
+        value={props.interviewer} 
+        onChange={setInterviewer} 
+        />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
