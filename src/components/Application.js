@@ -27,6 +27,14 @@ const appointments = [
   {
     id: 1,
     time: "12pm",
+    interview: {
+      student: "Nandor the Relentless",
+      interviewer: {
+        id: 5,
+        name: "Sven Jones",
+        avatar: "https://i.imgur.com/twYrpay.jpg"
+      }
+    }
   },
   {
     id: 2,
@@ -45,10 +53,10 @@ const appointments = [
     time: "5pm",
     interview: {
       student: "Arthur Negus",
-      interviewer: { 
+      interviewer: {
         id: 4,
-         name: "Cohana Roy", 
-         avatar: "https://i.imgur.com/FK8V841.jpg" 
+        name: "Cohana Roy",
+        avatar: "https://i.imgur.com/FK8V841.jpg"
       }
     }
   },
@@ -57,16 +65,24 @@ const appointments = [
     time: "9am",
     interview: {
       student: "Chuck Schuldiner",
-      interviewer: { 
+      interviewer: {
         id: 2,
-        name: "Tori Malcolm", 
-        avatar: "https://i.imgur.com/Nmx0Qxo.png" 
+        name: "Tori Malcolm",
+        avatar: "https://i.imgur.com/Nmx0Qxo.png"
       }
     }
   },
   {
     id: 5,
-    time: "10am"
+    time: "10am",
+    interview: {
+      student: "Venus Williams",
+      interviewer: { 
+        id: 3, 
+        name: "Mildred Nazir", 
+        avatar: "https://i.imgur.com/T2WwVfS.png" 
+      }
+    }
   }
 ];
 
@@ -89,9 +105,17 @@ export default function Application(props) {
         <img className="sidebar__lhl sidebar--centered" src="images/lhl.png" alt="Lighthouse Labs" />
       </section>
       <section className="schedule">
-        {/* <Header />
-        <InterviewerList 
-          interviewers={interviewers}/> */}
+        {appointments.map(appointment => {
+          return (
+            <Appointment
+              key={appointment.id}
+              time={appointment.time}
+              interview={appointment.interview}
+            />
+          )
+        })}
+        <Appointment key="last" time="5pm" />
+
       </section>
     </main>
   );
