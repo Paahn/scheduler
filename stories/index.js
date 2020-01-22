@@ -14,6 +14,8 @@ import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
+import Error from "components/Appointment/Error";
+import Header from "components/Appointment/Header";
 
 storiesOf("Button", module)
   .addParameters({
@@ -159,4 +161,7 @@ storiesOf("Appointment", module)
   <Status
   message="Deleting..."
   />
+))
+.add("Error", () => (
+  <Error message="Could not delete appointment." onClose={action("onClose")} />
 ));
