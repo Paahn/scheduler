@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
 import InterviewerList from "./InterviewerList";
+import Header from "../components/Appointment/Header";
 
 const days = [
   {
@@ -48,6 +49,7 @@ export default function Application(props) {
         <img className="sidebar__lhl sidebar--centered" src="images/lhl.png" alt="Lighthouse Labs" />
       </section>
       <section className="schedule">
+        <Header />
         <InterviewerList 
           interviewers={interviewers}/>
       </section>
