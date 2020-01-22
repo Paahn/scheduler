@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
-import InterviewerList from "./InterviewerList";
-import Header from "../components/Appointment/Header";
+// import InterviewerList from "./InterviewerList";
+// import Header from "../components/Appointment/Header";
 import Appointment from "components/Appointment";
 
 const days = [
