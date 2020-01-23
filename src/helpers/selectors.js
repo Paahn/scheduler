@@ -1,4 +1,4 @@
-function getAppointmentsForDay(state, day) {
+export function getAppointmentsForDay(state, day) {
   const resultDay = state.days.find((thisDay) => {
     return thisDay.name === day;
   });
@@ -10,4 +10,3 @@ function getAppointmentsForDay(state, day) {
   return resultArray;
 }
 
-export default { getAppointmentsForDay }
