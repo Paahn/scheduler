@@ -60,10 +60,10 @@ const appointments = [
     time: "10am",
     interview: {
       student: "Venus Williams",
-      interviewer: { 
-        id: 3, 
-        name: "Mildred Nazir", 
-        avatar: "https://i.imgur.com/T2WwVfS.png" 
+      interviewer: {
+        id: 3,
+        name: "Mildred Nazir",
+        avatar: "https://i.imgur.com/T2WwVfS.png"
       }
     }
   }
@@ -71,19 +71,26 @@ const appointments = [
 
 
 export default function Application(props) {
-  const [days, setDays] = useState([]);
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {}
   });
 
+  const setDay = day => setState(prev => ({ ...state, day }));
+
+
   useEffect(() => {
-    axios.get("http://localhost:8001/api/days")
-      .then((response) => {
-        setDays(response.data);
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments')
+    ])
+      .then(all => all.map(x => x.data))
+      .then(([days, appointments]) => {
+        setState(prev => ({ ...prev, days, appointments }));
       })
-    });
+  }, []);
 
   return (
     <main className="layout">
@@ -94,7 +101,7 @@ export default function Application(props) {
           <DayList
             days={state.days}
             day={state.day}
-            setDay={setDays}
+            setDay={setDay}
           />
         </nav>
         <img className="sidebar__lhl sidebar--centered" src="images/lhl.png" alt="Lighthouse Labs" />
