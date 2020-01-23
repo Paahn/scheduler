@@ -10,4 +10,4 @@ function getAppointmentsForDay(state, day) {
   return resultArray;
 }
 
-export { getAppointmentsForDay}
+export default { getAppointmentsForDay }
