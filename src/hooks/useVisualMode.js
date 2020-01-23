@@ -4,15 +4,16 @@ export default function useVisualMode(initial){
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-  function useCustomHook() {
-    function action() {}
+  function transition(newMode, replace = false) {
+    if (replace) {
+      history.pop();
+    }
 
-    return { action };
+    setMode(newMode);
+    setHistory([...history, newMode])
   }
-
-  function transition() { /* ... */ }
   function back() { 
-    setHistory((currentHistory) => {
+    setHistory((history) => {
       if (history.length > 1) {
         history.pop();
       }
