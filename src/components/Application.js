@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay, getInterview } from "../helpers/selectors";
-import useVisualMode from "../hooks/useVisualMode";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 const axios = require('axios');
 
 
@@ -17,6 +16,7 @@ export default function Application(props) {
   });
 
   const setDay = day => setState(prev => ({ ...state, day }));
+  const interviewers = getInterviewersForDay(state, state.day);
 
 
   useEffect(() => {
