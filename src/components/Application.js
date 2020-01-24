@@ -27,9 +27,26 @@ export default function Application(props) {
     ])
       .then(all => all.map(x => x.data))
       .then(([days, appointments, interviewers]) => {
-        setState(prev => ({ ...prev, days, appointments, interviewers }));
+        setState(prev => ({...prev, days, appointments, interviewers }));
       })
   }, []);
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };     
+    setState({
+      ...state,
+      appointments
+    });       
+  }
+  
 
   const schedule = getAppointmentsForDay(state, state.day)
     .map((appointment) => {
@@ -41,6 +58,7 @@ export default function Application(props) {
           key={appointment.id}
           interview={interview}
           interviewers={interviewers}
+          state={state}
         />
       );
     })

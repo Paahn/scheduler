@@ -7,7 +7,6 @@ import Form from "./Form";
 import useVisualMode from "hooks/useVisualMode";
 
 export default function Appointment(props) {
-
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const EDIT = "EDIT";
@@ -15,7 +14,14 @@ export default function Appointment(props) {
   const CONFIRM = "CONFIRM";
 
 
-  const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY)
+  const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+  }
+  
 
   return (
     <article className="appointment">
@@ -37,7 +43,7 @@ export default function Appointment(props) {
         )}
         {mode === CREATE && 
         <Form 
-        onCancel={back} 
+        onCancel={back} onSave={save} state={props.state}
         />
   }
       

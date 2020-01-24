@@ -5,6 +5,7 @@ import Button from "../Button";
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  console.log(props);
 
   function reset() {
     setName("");
@@ -38,9 +39,10 @@ export default function Form(props) {
           />
         </form>
         <InterviewerList 
-        interviewers={props.interviewers} 
+        interviewers={props.state.interviewers} 
         value={interviewer} 
         onChange={setInterviewer} 
+        state={props.state}
         />
       </section>
       <section className="appointment__card-right">
