@@ -14,6 +14,7 @@ export default function Appointment(props) {
   const CREATE = "CREATE";
   const CONFIRM = "CONFIRM";
   const SAVING = "SAVING";
+  const DELETING = "DELETING";
 
 
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
@@ -32,6 +33,14 @@ export default function Appointment(props) {
     // .catch(() => oshit())
 
   }
+
+  function deleteAppointment() {
+    transition(DELETING);
+    Promise.resolve(props.cancelInterview(props.id))
+    .then(() => {
+      transition(EMPTY)
+    })
+  }
   
 
   return (
@@ -45,10 +54,11 @@ export default function Appointment(props) {
 
         {mode === SHOW &&
         <Show
+          id={props.id}
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onEdit={() => transition(EDIT)}
-          onDelete={() => transition(CONFIRM)}
+          onDelete={deleteAppointment}
         />
         }
 
