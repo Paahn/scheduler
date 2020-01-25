@@ -37,14 +37,16 @@ export default function Application(props) {
       ...state.appointments[id],
       interview: { ...interview }
     };
+
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };     
-    setState({
-      ...state,
-      appointments
-    });       
+    return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview})
+    .then(res => {
+      setState({...state, appointments});
+      return Promise.resolve(res);
+    });      
   }
   
 
@@ -59,6 +61,7 @@ export default function Application(props) {
           interview={interview}
           interviewers={interviewers}
           state={state}
+          bookInterview={bookInterview}
         />
       );
     })
@@ -83,6 +86,7 @@ export default function Application(props) {
         <Appointment 
         key="last" 
         time="5pm" 
+        bookInterview={bookInterview}
         />
       </section>
     </main>
