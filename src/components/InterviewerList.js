@@ -5,19 +5,20 @@ import { getInterviewersForDay } from "helpers/selectors";
 
 export default function InterviewerList(props) {
   
-  const interviewers = getInterviewersForDay(props.state,  props.state.day);
+  const availInterviewers = getInterviewersForDay(props.state,  props.state.day);
+  console.log(availInterviewers);
   
 
-  const listOfInterviewers = Object.keys(props.interviewers).map(id => {
-    const interviewer = props.interviewers[id]
+  const listOfInterviewers = Object.values(availInterviewers).map(info => {
+    
     return (
       <InterviewerListItem
-      id={interviewer.id}
-      name={interviewer.name}
-      avatar={interviewer.avatar}
-      selected={interviewer.id === props.value}
-      setInterviewer={ (event) => props.onChange(interviewer.id)}
-      key={interviewer.id}
+      id={props.interviewers[info].id}
+      name={props.interviewers[info].name}
+      avatar={props.interviewers[info].avatar}
+      selected={props.interviewers[info].id === props.value}
+      setInterviewer={ (event) => props.onChange(props.interviewers[info].id)}
+      key={props.interviewers[info].id}
       />
     )
   })

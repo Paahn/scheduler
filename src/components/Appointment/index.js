@@ -64,7 +64,7 @@ export default function Appointment(props) {
 
         {mode === CREATE && 
         <Form 
-          onCancel={back} onSave={save} state={props.state}
+          onCancel={back} onSave={save} state={props.state}onAdd
         />}
 
         {mode === SAVING && (
@@ -86,14 +86,15 @@ export default function Appointment(props) {
           />
         )}
 
-        {/* {mode === EDIT && (
+        {mode === EDIT && (
           <Form 
             name={props.interview.student}
             interviewer={props.interview.interviewer}
             onCancel={() => back()}
             onSave={save}
+            state={props.state}
           />
-        )} */}
+        )}
 
         {mode === ERROR_SAVE && (
           <Error 
