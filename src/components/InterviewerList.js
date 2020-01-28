@@ -2,6 +2,12 @@ import React from 'react';
 import InterviewerListItem from "./InterviewerListItem";
 import "./InterviewerList.scss";
 import { getInterviewersForDay } from "helpers/selectors";
+import PropTypes from 'prop-types';
+
+InterviewerList.propTypes = {
+  value: PropTypes.object,
+  onChange: PropTypes.func.isRequired
+};
 
 export default function InterviewerList(props) {
   
