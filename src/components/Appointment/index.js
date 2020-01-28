@@ -91,7 +91,9 @@ export default function Appointment(props) {
             name={props.interview.student}
             interviewer={props.interview.interviewer}
             onCancel={() => back()}
-            onSave={save}
+            onSave={(name, interviewer) => {
+              save(name, interviewer);
+            }}
             state={props.state}
           />
         )}
