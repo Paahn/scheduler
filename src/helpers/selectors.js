@@ -25,7 +25,6 @@ function getInterviewersForDay(state, day) {
   console.log(state.days);
   const availInterviewers = state.days.filter(available => available.name === day).map(available => available.interviewers)[0] ||
     [];
-  // const availInterviewers = availableInterviewers.map(el => availInterviewers[el]);
   return availInterviewers;
 }
 
