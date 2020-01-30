@@ -11,9 +11,7 @@ InterviewerList.propTypes = {
 
 export default function InterviewerList(props) {
   
-  const availInterviewers = getInterviewersForDay(props.state,  props.state.day);
-  console.log(availInterviewers);
-  
+  const availInterviewers = getInterviewersForDay(props.state,  props.state.day);  
 
   const listOfInterviewers = Object.values(availInterviewers).map(info => {
     

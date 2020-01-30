@@ -6,7 +6,6 @@ export default function useVisualMode(initial){
 
   function transition(newMode, replace) {
 
-    console.log(history)
     if (replace) {
       setHistory(recentHistory => [...recentHistory.slice(0, recentHistory.length - 1), newMode]);
     } else {

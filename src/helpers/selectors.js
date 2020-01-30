@@ -22,13 +22,13 @@ function getInterview(state, interview) {
 }
 
 function getInterviewersForDay(state, day) {
-  console.log(state);
+  
   const availInterviewers = state.days.filter(available => available.name === day).map(available => available.interviewers)[0] ||
     [];
   return availInterviewers;
 }
 function getSpotsForDay(state, day) {
-  // console.log(state.day);
+  
   let counter = 5;
   const currentDay = state.days.filter(newDay => newDay.name === day)[0];
   currentDay.appointments.forEach( x => {

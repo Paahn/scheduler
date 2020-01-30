@@ -37,7 +37,6 @@ function appStateReducer (state, action) {
         return {...d, spots: getSpotsForDay(newerState, d.name)};
   
       }) }
-      return {...state, appointments: {...state.appointments, [appointmentID]: appointment}};
     case UPDATE_SPOTS:
       return { ...state, spots};
     default:
