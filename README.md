@@ -1,7 +1,7 @@
 # Interview Scheduler
 This app is built using the latest tools and techniques. It allows users to book and cancel interviews with an interviewer of their choice.
 
-!["Main page"]( images/scheduler-project-cover.png )
+!["Main page"](images/scheduler-project-cover.png)
 
 ## Setup
 
